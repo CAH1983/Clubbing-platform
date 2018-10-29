@@ -18,7 +18,7 @@ class Navbar extends React.Component {
     axios.get(`/api/users/${Auth.getPayload().sub}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
-      .then(res => this.setState({ user: res.data }));
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   componentDidMount() {

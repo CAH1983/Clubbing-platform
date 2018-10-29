@@ -71,17 +71,20 @@ class EventsShow extends React.Component {
             <div className="columns">
 
               <div className="column is-half">
+
                 <img src={ this.state.event.image } alt={ this.state.event.name } height="200" />
 
                 <p>posted by:</p>
-                <p> <span> <img src={ this.state.user.image } height="50" width="50" /> </span>
-                  <strong> { this.state.event.user.username } </strong></p>
+                <Link to={`/profile/${this.state.event.user.id}`}>
+                  <img src={ this.state.user.image } height="50" width="50" />
+                  <strong>{ this.state.event.user.username }</strong>
+                </Link>
               </div>
 
 
               {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.event.user.id &&
               <div>
-                <Link className="button" to={`/events/${this.state.event.id}/edit`}> Edit </Link>
+                <Link className="button" to={`/events/${this.state.event.id }/edit`}> Edit </Link>
                 <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
               </div>}
 

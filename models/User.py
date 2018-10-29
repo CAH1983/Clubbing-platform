@@ -16,6 +16,7 @@ class User(db.Model):
     _password = db.Column(db.String(128))
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+    events = db.relationship('Event')
 
     @hybrid_property
     def password(self):
@@ -60,6 +61,7 @@ class UserSchema(ma.Schema):
     email = fields.Email(required=True)
     password = fields.String(required=True)
     password_confirmation = fields.String(required=True)
+    events = fields.Nested('EventSchema', many=True, only=('id', 'name', 'date', 'location', 'image'))
 
     @validates_schema
     def validate_password(self, data):
@@ -78,7 +80,8 @@ class UserSchema(ma.Schema):
             'email',
             'password',
             'password_confirmation',
+            'events',
             'created_at',
             'updated_at'
         )
-        dump_only = ('created_at', 'updated_at')  # only write created & updated fields
+        dump_only = ('created_at', 'updated_at', 'events')  # only write created & updated fields

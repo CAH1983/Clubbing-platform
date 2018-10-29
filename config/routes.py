@@ -1,11 +1,12 @@
 import os
 from app import app
-from controllers import events, auth, photos
+from controllers import events, auth, photos, users
 
 # -------------- blueprints -----------------------
 app.register_blueprint(events.api, url_prefix='/api')
 app.register_blueprint(auth.api, url_prefix='/api')
 app.register_blueprint(photos.api, url_prefix='/api')
+app.register_blueprint(users.api, url_prefix='/api')
 
 
 # if doesn't find the blueprint, use these default routes

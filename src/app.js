@@ -5,6 +5,8 @@ import EventsShow from './components/events/EventsShow';
 import EventsIndex from './components/events/EventsIndex';
 import EventsHome from './components/events/EventsHome';
 import Register from './components/user/Register';
+import Login from './components/user/Login';
+import Profile from './components/user/Profile';
 import NavBar from './components/NavBar';
 import FlashMessages from './components/FlashMessages';
 
@@ -41,7 +43,9 @@ class App extends React.Component {
               <Switch>
                 <Route path="/events/:id" component={EventsShow} />
                 <Route path="/events" component={EventsIndex} />
+                <Route path="/profile/:id" component={Profile} />
                 <Route path="/register" component={Register} />
+                <Route path="/login" component={Login} />
                 <Route path="/" component={EventsHome} />
               </Switch>
 
