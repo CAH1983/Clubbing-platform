@@ -11,9 +11,11 @@ flask-migrate = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-bcrypt = "*"
-pyjwt = "*"
 python-dotenv = "*"
 "psycopg2-binary" = "*"
+blueprint = "*"
+pyjwt = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 
