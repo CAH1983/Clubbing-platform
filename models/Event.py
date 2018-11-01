@@ -2,6 +2,12 @@ from app import db, ma
 from datetime import datetime
 from marshmallow import fields
 
+class Attendees(db.Model):
+    __tablename__ = 'attendees'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'), primary_key=True)
+
 
 class Event(db.Model):
     # event model, nullable = not required, unique = can be only one
@@ -24,9 +30,16 @@ class Event(db.Model):
         'EventComment',
         cascade='delete-orphan, delete'
     )
+    attendees = db.relationship(
+        'User',
+        secondary='attendees'
+    )
+    photos = db.relationship('Photo')
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+
 # ---------------------------------------------------------------------
+
     def __init__(self, data):
         for key, item in data.items():
             setattr(self, key, item)
@@ -67,11 +80,19 @@ class EventSchema(ma.Schema):
         error_messages={'required': 'Enter a location'}
     )
     image = fields.String(required=True)
-    user = fields.Nested('UserSchema')
+    user = fields.Nested('UserSchema', exclude=('events', ))
     comments = fields.Nested(
         'EventCommentSchema',
         many=True,
         exclude=('event_id', )
+    )
+    photos = fields.Nested(
+        'PhotoSchema',
+        many=True
+    )
+    attendees = fields.Nested(
+        'UserSchema',
+        many=True
     )
 
     # -----these are the data that will be rendered in the browser
@@ -89,6 +110,8 @@ class EventSchema(ma.Schema):
             'user',
             'price',
             'comments',
+            'attendees',
+            'photos',
             'created_at',
             'updated_at'
         )

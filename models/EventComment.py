@@ -43,13 +43,14 @@ class EventComment(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+
 # ------------------------- event comment schema -----------------------------
 class EventCommentSchema(ma.Schema):
 
     content = fields.String(required=True)
     user_id = fields.Integer(required=True)
     event_id = fields.Integer(required=True)
-    user = fields.Nested('UserSchema', only=('id', 'username'))
+    user = fields.Nested('UserSchema', only=('id', 'username', 'image'))
 
 # --------------------------------------------
     class Meta:

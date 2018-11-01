@@ -49,37 +49,35 @@ class Navbar extends React.Component {
   // ====================================================================================
   render() {
     return (
+
       <nav className="navbar is-fixed-top" role="navigation">
         <div className="container">
+          {/* ----------------------------------------------------------- */}
+          <div className="navbar-brand">
+            <Link className="navbar-item logo" to="/">
+              <h1> <img className="CB-logo" src="/assets/images/clubbing-logo.png" alt= "Clubbing Messe" /> </h1>
 
-          {/* ----------------- BURGER ------------------ */}
-          <a role="button"
-            className={`navbar-burger ${this.state.navbarActive ? 'is-active' : ''}`}
-            data-target="navbar-menu"
-            aria-label="menu"
-            aria-expanded={this.state.navbarActive ? 'true' : 'false'}
-            onClick={this.toggleNavbar}
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        {/* ----------------------------------------------------------- */}
+            </Link>
 
-        <div className={`navbar-menu ${this.state.navbarActive ? 'is-active' : ''}`}>
-          {/* ------------------ start ------------------- */}
-          <div className="navbar-start">
-            <Link className="navbar-item" to="/events"> Events </Link>
-            {Auth.isAuthenticated() && <Link href="#" className="navbar-item" to="/events/new"> Post your event </Link>}
+            {/* ----------------- BURGER ------------------ */}
+            <a role="button"
+              className={`navbar-burger ${this.state.navbarActive ? 'is-active' : ''}`}
+              data-target="navbar-menu"
+              aria-label="menu"
+              aria-expanded={this.state.navbarActive ? 'true' : 'false'}
+              onClick={this.toggleNavbar}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
 
-            {/* ------------- LOGO in the middle --------- */}
-
-            <div className="navbar-brand">
-              <Link className="navbar-item logo" to="/">
-                <h1> <img className="CB-logo" src="/assets/images/clubbing-logo.png" alt= "Clubbing Messe" /> </h1>
-
-              </Link>
+          <div className={`navbar-menu ${this.state.navbarActive ? 'is-active' : ''}`}>
+            {/* ------------------ start ------------------- */}
+            <div className="navbar-start">
+              <Link className="navbar-item" to="/events"> Events </Link>
+              {Auth.isAuthenticated() && <Link href="#" className="navbar-item" to="/events/new"> Post your event </Link>}
             </div>
 
             {/* -------------- end ----------------------- */}
@@ -87,9 +85,9 @@ class Navbar extends React.Component {
               <Link className="navbar-item" to="/photos"> Photos </Link>
               {Auth.isAuthenticated() && <Link href="#" className="navbar-item" to="/photos/new"> Post your photos </Link>}
 
-              {Auth.isAuthenticated() && this.state.user && <Link href="#" className="navbar-item nav-icon" to="/profile">
+              {Auth.isAuthenticated() && this.state.user && <Link href="#" className="navbar-item nav-icon" to={`/profile/${Auth.getPayload().sub}`}>
                 <strong>{this.state.user.username}</strong>
-                <img src={this.state.user.image} />
+                <img className="avatar" src={this.state.user.image} />
               </Link>}
 
               {/* -------- login / logout ---- */}
@@ -99,7 +97,6 @@ class Navbar extends React.Component {
             </div>
           </div>
         </div>
-
       </nav>
     );
   }

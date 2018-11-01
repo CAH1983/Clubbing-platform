@@ -7,6 +7,11 @@ class Photo(db.Model):
     # ------------------------------ Photo table ----------------------------
     __tablename__ = 'photos'
     id = db.Column(db.Integer, primary_key=True)
+    event_id = db.Column(
+        db.Integer,
+        db.ForeignKey('events.id'),
+        nullable=False
+    )
     image = db.Column(db.String(150), nullable=False)
     user_id = db.Column(
         db.Integer,
@@ -14,10 +19,6 @@ class Photo(db.Model):
         nullable=False
     )
     caption = db.Column(db.String(200))
-    comments = db.relationship(
-        'PhotoComment',
-        cascade='delete-orphan, delete'
-    )
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
@@ -60,11 +61,11 @@ class PhotoSchema(ma.Schema):
             'id',
             'image',
             'user_id',
+            'event_id',
             'caption',
-            'comments',
             'created_at',
             'updated_at'
         )
 
-        load_only = ('user_id', )
-        dump_only = ('comments', 'created_at', 'updated_at')
+        load_only = ('user_id', 'event_id')
+        dump_only = ('created_at', 'updated_at')

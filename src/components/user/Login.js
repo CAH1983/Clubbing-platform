@@ -23,38 +23,42 @@ class Login extends React.Component {
       .then((res) => {
         Auth.setToken(res.data.token);
         Flash.setMessage('success', 'Welcome back!');
-        this.props.history.push('/recipes');
+        this.props.history.push('/');
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }));
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input className={`input ${this.state.error ? 'is-danger' : ''}`}
-              name="email"
-              placeholder="Email"
-              onChange={this.handleChange} />
-          </div>
-        </div>
+      <main className="section">
+        <div className="container">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input className={`input ${this.state.error ? 'is-danger' : ''}`}
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.handleChange} />
+              </div>
+            </div>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input className={`input ${this.state.error ? 'is-danger' : ''}`}
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={this.handleChange} />
-          </div>
-        </div>
-        {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input className={`input ${this.state.error ? 'is-danger' : ''}`}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.handleChange} />
+              </div>
+            </div>
+            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
 
-        <button className="button is-primary">Submit</button>
-      </form>
+            <button className="button is-primary">Submit</button>
+          </form>
+        </div>
+      </main>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const EventCard = ({ name, date, location, image }) => {
   return (
@@ -6,7 +7,7 @@ const EventCard = ({ name, date, location, image }) => {
 
       <header className="card-header">
         {/* name of the event */}
-        <h2 className="card-header-title">{date}</h2>
+        <h2 className="card-header-title">{ moment(date).format('do MMM YY') }</h2>
       </header>
       {/* image of the event */}
       <div className="card-image">
@@ -16,11 +17,8 @@ const EventCard = ({ name, date, location, image }) => {
       </div>
       <div className="card-content">
         {/* name */}
-        <p><strong> {name} </strong></p>
-      </div>
-      <div className="card-content">
-        {/* location */}
-        <p><strong>location:</strong> {location} </p>
+        <p className="uppercase"><strong> {name} </strong></p>
+        <p> {location} </p>
       </div>
     </div>
   );

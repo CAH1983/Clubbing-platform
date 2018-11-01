@@ -1,10 +1,13 @@
 from flask import Blueprint, request, jsonify, g
 from models.Event import Event, EventSchema
 from models.EventComment import EventComment,  EventCommentSchema
+from models.Photo import Photo, PhotoSchema
 from lib.secure_route import secure_route
 
 event_schema = EventSchema()
-events_schema = EventSchema(many=True)
+events_schema = EventSchema(many=True, exclude=('photos', 'comments', ))
+photo_schema = PhotoSchema()
+event_comment_schema = EventCommentSchema()
 event_comment_schema = EventCommentSchema()
 
 api = Blueprint('events', __name__)
@@ -112,3 +115,48 @@ def delete_comment(id, comment_id):
     comment.delete()
     print('event comment deleted')
     return '', 204
+
+
+# ------------- Post a new photo  ---------------
+@api.route('/events/<int:id>/photos', methods=['POST'])
+@secure_route
+def create_photo(id):
+    req_data = request.get_json()
+    req_data['user_id'] = g.current_user.id
+    req_data['event_id'] = id
+    data, errors = photo_schema.load(req_data)
+
+    if errors:
+        return jsonify({'errors': errors}), 422
+
+    photo = Photo(data)
+    photo.save()
+
+    print('photo posted!')
+    return photo_schema.jsonify(photo), 201
+
+
+# --------------- Delete photo  ---------------
+@api.route('/events/<int:id>/photos/<int:photo_id>', methods=['DELETE'])
+@secure_route
+def delete_photo(id, photo_id):
+    photo = Photo.query.get(photo_id)
+    print('photo deleted')
+
+    if not photo:
+        return jsonify({'message': 'Not found'}), 404
+
+    photo.delete()
+    return '', 204
+
+
+# --------------- Delete comment  -----------------
+@api.route('/events/<int:id>/attend', methods=['POST'])
+@secure_route
+def attend_event(id):
+    event = Event.query.get(id)
+
+    event.attendees.append(g.current_user)
+    event.save()
+
+    return event_schema.jsonify(event)

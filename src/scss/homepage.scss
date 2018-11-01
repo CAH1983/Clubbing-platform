@@ -1,0 +1,53 @@
+div.hero {
+  background-image: url('../assets/images/hero2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 460px;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.hero {
+  h1 {
+    font-size: 40px;
+    text-decoration: line-through;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 5px;
+    // font-family: 'Baumans', cursive;
+  }
+}
+
+
+.homepage-upcoming {
+  margin-top: 50px;
+  h1 {
+  color: rgb(0, 209, 177);
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-family: 'Baumans', cursive;
+  }
+}
+
+
+section.pasteventssection {
+  background-color: #919098;
+  margin-top: 50px;
+  img {
+  opacity: 0.7;
+  }
+  h1 {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-family: 'Baumans', cursive;
+  }
+
+
+}
+.event-index {
+  img {
+    z-index: 1
+  }
+}
