@@ -63,3 +63,9 @@ h2.card-header-title {
 .input {
   width: 700px;
 }
+
+.zoom-one:hover {
+    -ms-transform: scale(2); /* IE 9 */
+    -webkit-transform: scale(2); /* Safari 3-8 */
+    transform: scale(2);
+}

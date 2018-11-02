@@ -30,7 +30,7 @@ class PhotosIndex extends React.Component {
         <section className="section">
           <div className="container">
 
-            <h1> Select an event and post your photos</h1>
+            <h1 className="title is-2"> Select an event</h1>
             <ul className="columns is-multiline events-index">
               {this.state.pastEvents.map(event =>
                 <li

@@ -8,11 +8,27 @@
 }
 
 .block-info {
+  a {
+    color: white;
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+
 .padding50 {
-  padding: 50px;
+  padding-top: 50px;
+}
+
+div.small-events-infos {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around space-evenly;
+  margin: 30px 0 20px 0;
+}
+
+.box-attendees {
+  flex-wrap: wrap;
 }

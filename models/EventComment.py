@@ -4,7 +4,7 @@ from marshmallow import fields
 
 
 class EventComment(db.Model):
-# ------------------ EventComment model -------------------
+    # ------------------ EventComment model -------------------
 
     __tablename__ = 'event_comments'
 

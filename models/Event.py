@@ -2,6 +2,7 @@ from app import db, ma
 from datetime import datetime
 from marshmallow import fields
 
+
 class Attendees(db.Model):
     __tablename__ = 'attendees'
 

@@ -83,7 +83,7 @@ class Navbar extends React.Component {
             {/* -------------- end ----------------------- */}
             <div className="navbar-end">
               <Link className="navbar-item" to="/photos"> Photos </Link>
-              {Auth.isAuthenticated() && <Link href="#" className="navbar-item" to="/photos/new"> Post your photos </Link>}
+              {/* {Auth.isAuthenticated() && <Link href="#" className="navbar-item" to="/photos/new"> Post your photos </Link>} */}
 
               {Auth.isAuthenticated() && this.state.user && <Link href="#" className="navbar-item nav-icon" to={`/profile/${Auth.getPayload().sub}`}>
                 <strong>{this.state.user.username}</strong>

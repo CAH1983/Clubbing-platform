@@ -51,11 +51,11 @@ class Profile extends React.Component {
                     </p>
                   </article>
                   <hr />
-                  {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user.id &&
+                  {/* {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user.id &&
                   <div>
                     <Link className="button"
                       to={`/profile/${this.state.user.id}/edit`}>Edit</Link>
-                  </div>}
+                  </div>} */}
 
                 </div>
 

@@ -31,8 +31,8 @@ class EventsHome extends React.Component {
           <div className="hero">
             {/* ------------------  Hero -------------------- */}
             <p>
-              <h1>Clubbing Messe</h1>
-              Welcome to the clubbers parish
+              <h1 className="hero-title">Clubbing Messe</h1>
+              <div className="sub-title">welcome to the clubbers' parish</div>
             </p>
           </div>
         </section>
@@ -62,7 +62,7 @@ class EventsHome extends React.Component {
         <section className="section pasteventssection">
           <div className="container">
 
-            <h1> Past Events / Photo reports </h1>
+            <h1> Past Events ⍙ Photo reports </h1>
             <ul className="columns is-multiline events-index">
               {this.state.pastEvents.map(event =>
                 <li

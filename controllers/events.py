@@ -16,7 +16,7 @@ api = Blueprint('events', __name__)
 # --------------- events index ----------------
 @api.route('/events', methods=['GET'])
 def index():
-    events = Event.query.all()
+    events = Event.query.order_by('date asc').all()
     return events_schema.jsonify(events)
 
 

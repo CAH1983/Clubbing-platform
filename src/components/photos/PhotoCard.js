@@ -4,7 +4,7 @@ const PhotoCard = ({ image, caption }) => {
   return (
     <div className="card thumbnailpic">
       <div className="card-content">
-        <div className="card-image">
+        <div className="card-image zoom-one">
           <figure className="image">
             <img src={image} alt={caption} />
           </figure>

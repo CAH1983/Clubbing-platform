@@ -7,7 +7,7 @@ const EventCard = ({ name, date, location, image }) => {
 
       <header className="card-header">
         {/* name of the event */}
-        <h2 className="card-header-title">{ moment(date).format('do MMM YY') }</h2>
+        <h2 className="card-header-title">{ moment(date).format('DD MMM YY') }</h2>
       </header>
       {/* image of the event */}
       <div className="card-image">

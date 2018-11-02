@@ -2,22 +2,28 @@ div.hero {
   background-image: url('../assets/images/hero2.png');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 460px;
+  height: 420px;
   justify-content: center;
   text-align: center;
+  div.sub-title {
+    font-size: 20px;
+    letter-spacing: 6.5px;
+  }
 
 }
 
-.hero {
-  h1 {
+
+h1.hero-title {
     font-size: 40px;
     text-decoration: line-through;
     font-weight: bold;
     color: white;
-    letter-spacing: 5px;
+    letter-spacing: 9px;
+    font-family: sans-serif;
+
     // font-family: 'Baumans', cursive;
   }
-}
+
 
 
 .homepage-upcoming {

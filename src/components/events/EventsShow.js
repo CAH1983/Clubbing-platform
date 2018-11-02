@@ -98,7 +98,7 @@ class EventsShow extends React.Component {
     axios.post(`/api/events/${this.props.match.params.id}/attend`, null, {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(res => console.log(res.data));
+      .then(res => this.setState({ event: res.data }));
   }
 
   // ======================== RENDER PART =============================
@@ -115,7 +115,7 @@ class EventsShow extends React.Component {
             <hr />
 
             {/* -------------------------right column -------------------------- */}
-            {/* image & username */}
+            {/* *** image & username *** */}
             <div className="columns">
 
               <div className="column is-half">
@@ -127,14 +127,21 @@ class EventsShow extends React.Component {
               <div className="column is-half event-info">
                 <div className="block-info">
                   <p>posted by:</p>
+
                   <Link to={`/profile/${this.state.event.user.id}`}>
                     <img className="avatar" src={ this.state.event.user.image } height="50" width="50" />
+
                     <strong>{ this.state.event.user.username }</strong>
+
                   </Link>
-                  <p> <strong> Date : </strong> { this.state.event.date } </p>
-                  <p> <strong> Location: </strong> { this.state.event.location } </p>
-                  <p> <strong> Genre: </strong> { this.state.event.genre } </p>
-                  <p> <strong> Price: </strong> $ { this.state.event.price }</p>
+
+                  {/* *** events infos *** */}
+                  <div className="small-events-infos">
+                    <p> Date: {moment(this.state.event.date).format('DD MMM YY') } </p>
+                    <p>Location: { this.state.event.location } </p>
+                    <p>Genre: { this.state.event.genre } </p>
+                    <p>Price: $ { this.state.event.price }</p>
+                  </div>
                 </div>
 
                 {/* ---------- delete, edit buttons ----------- */}
@@ -152,7 +159,7 @@ class EventsShow extends React.Component {
                 <div className="padding50">
                   <h1 className="subtitle"> Members attending </h1>
                   <div>
-                    <ul className="columns ">
+                    <ul className="columns box-attendees">
                       {this.state.event.attendees.map(attendee =>
                         <Link key={attendee.id} to={`/profile/${attendee.id}`}>
                           <figure className="avatar">

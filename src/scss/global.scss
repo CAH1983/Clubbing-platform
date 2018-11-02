@@ -25,17 +25,26 @@ img {
 h1 {
   text-transform: uppercase;
   font-size: 20px;
+  font-family: 'Baumans', cursive;
+
 }
 
-h1.title.is-1 {
-  color: white;
+h1.title.is-1, h1.title.is-2 {
+  color: #fffff4;
 }
 
 .subtitle {
   font-size: 16px;
-  color: white;
+  color: #fffff4;
 }
 
 .label {
-  color: white
+  color: #fffff4;
+}
+
+.button.button.is-primary {
+  border-radius: 10%;
+  background-color: transparent;
+  border-color: white;
+  color: #fff;
 }

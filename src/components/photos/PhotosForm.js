@@ -4,7 +4,6 @@ const PhotosForm = ({ handleSubmit, handleChange, photo, errors }) => {
   return (
     <main className="section">
       <div className="container">
-        <h1> Post your pics </h1>
 
         <form onSubmit={handleSubmit}>
 

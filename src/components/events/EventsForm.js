@@ -26,6 +26,7 @@ const EventsForm = ({ handleSubmit, handleChange, event, errors }) => {
             <label className="label"> Date </label>
             <div className="control">
               <input type="date"
+                className="input"
                 name="date"
                 placeholder="Select date"
                 onChange={handleChange}
@@ -97,7 +98,7 @@ const EventsForm = ({ handleSubmit, handleChange, event, errors }) => {
 
           <button className="button is-primary">Submit</button>
         </form>
-        
+
       </div>
     </main>
   );
