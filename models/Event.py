@@ -24,7 +24,7 @@ class Event(db.Model):
         nullable=False
     )
     genre = db.Column(db.String(80))
-    image = db.Column(db.String(150), nullable=False)
+    image = db.Column(db.String(300), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     user = db.relationship('User')
     comments = db.relationship(

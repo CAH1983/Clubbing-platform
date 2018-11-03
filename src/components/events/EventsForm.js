@@ -43,7 +43,7 @@ const EventsForm = ({ handleSubmit, handleChange, event, errors }) => {
               <input
                 className={`input ${errors.image ? 'is-danger' : ''}`}
                 name="image"
-                placeholder="Image"
+                placeholder="Insert link to your image. max 300 char."
                 onChange={handleChange}
                 value={event.image || ''}
               />

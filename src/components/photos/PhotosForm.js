@@ -14,7 +14,7 @@ const PhotosForm = ({ handleSubmit, handleChange, photo, errors }) => {
               <input
                 className={`input ${errors.image ? 'is-danger' : ''}`}
                 name="image"
-                placeholder="Image"
+                placeholder="copy paste link to your photo"
                 onChange={handleChange}
                 value={photo.image || ''}
               />

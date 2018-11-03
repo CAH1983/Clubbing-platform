@@ -12,7 +12,7 @@ class Photo(db.Model):
         db.ForeignKey('events.id'),
         nullable=False
     )
-    image = db.Column(db.String(150), nullable=False)
+    image = db.Column(db.String(250), nullable=False)
     user_id = db.Column(
         db.Integer,
         db.ForeignKey('users.id'),
