@@ -8,7 +8,7 @@ import Auth from '../../lib/Auth';
 class EventsEdit extends React.Component {
   constructor() {
     super();
-    this.state = { event: null };
+    this.state = { event: null, errors: {} };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,7 +30,8 @@ class EventsEdit extends React.Component {
       .put(`/api/events/${this.props.match.params.id}`, this.state.event, {
         headers: { Authorization: `Bearer ${token}`}
       })
-      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`));
+      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
