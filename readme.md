@@ -1,6 +1,22 @@
-# WDI-Project 04 - Final Project : Full stack app
+# WDI-Project 04 - Final Project : Clubbing Messe
 
 ## Goal: Creating a full stack API app
+
+
+## My app - Clubbing Messe
+
+
+### Overview
+This final project is a clubbing community platform to showcase upcoming electronic music events and share pictures across the globe.
+Users can post, comment or create their own events, or attend existing events posted by others. They can also view other members’ profiles and post pictures related to past events.
+
+The users can:
+* Register
+* Login
+* EVENTS: create, post, comment, comment other users' EVENTS
+* Attend events
+* PHOTOS : post its own photos to past events
+* View profile
 
 ## Technologies used
 
@@ -17,19 +33,6 @@
 * Heroku
 
 
-## My app - Clubbing Messe
-
-
-### App overview
-Clubbing Messe is a a community platform that allows users to share events and photos of Electronic music events worldwide.
-The users can:
-* Register
-* Login
-* EVENTS: create, post, comment, comment other users' EVENTS
-* Attend events
-* PHOTOS : post its own photos to past events
-
-
 ### App views
 1. Home page
 
@@ -37,7 +40,7 @@ The user can see 2 separate sections: UPCOMING events and PAST EVENTS/ PHOTO rep
 
 ![home](src/assets/images/homepage-hero.png)
 
-![home2](src/assets/images/upcoming events.png)
+![home2](src/assets/images/upcomingevents.png)
 
 ![home3](src/assets/images/past-events.png)
 
