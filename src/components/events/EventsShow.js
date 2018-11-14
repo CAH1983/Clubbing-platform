@@ -103,7 +103,7 @@ class EventsShow extends React.Component {
       .delete(`/api/events/${this.props.match.params.id}/photos/${photo.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      .then(() => this.props.history.push(`/events/${this.state.event.id}`));
+      .then(() =>  this.showEventPage());
   }
 
 
@@ -243,12 +243,12 @@ class EventsShow extends React.Component {
               {this.state.event.photos.map(photo =>
                 <li className="column is-one-fifth-desktop is-one-third-tablet" key={photo.id}
                 >
-                  <Link to={`/events/${event.id}/photo/${photo.id}`}>
-                    <PhotoCard
-                      {...photo}
-                      handleDelete={this.handlePhotoDelete}
-                    />
-                  </Link>
+                  <button onClick={() => this.handlePhotoDelete(photo)} className="delete"></button>
+                  {/* <Link to={`/events/${event.id}/photo/${photo.id}`}> */}
+                  <PhotoCard
+                    {...photo}
+                  />
+                  {/* </Link> */}
                 </li>
               )}
             </ul>
