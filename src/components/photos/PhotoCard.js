@@ -9,7 +9,7 @@ const PhotoCard = ({ image, caption }) => {
             <img src={image} alt={caption} />
           </figure>
         </div>
-        <p> <small>{caption} </small></p>
+        <p> <small> {caption} </small></p>
       </div>
     </div>
   );

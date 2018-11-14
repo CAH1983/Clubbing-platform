@@ -26,10 +26,16 @@ class EventsShow extends React.Component {
     this.handleAttend = this.handleAttend.bind(this);
   }
 
-  // ----- Component did mount ----
-  componentDidMount() {
+  // funtion display the page
+
+  showEventPage() {
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then(res => this.setState({ event: res.data }));
+  }
+
+  // ----- Component did mount ----
+  componentDidMount() {
+    this.showEventPage();
   }
 
 
@@ -79,7 +85,7 @@ class EventsShow extends React.Component {
     axios.delete(`/api/events/${this.props.match.params.id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(() => this.props.history.push('/events'));
+      .then(() =>  this.showEventPage());
   }
 
   handleCommentDelete(comment) {
@@ -88,8 +94,16 @@ class EventsShow extends React.Component {
       .delete(`/api/events/${this.props.match.params.id}/comments/${comment.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      .then(res => this.setState({ event: res.data }));
+      .then(() =>  this.showEventPage());
+  }
 
+  handlePhotoDelete(photo) {
+    const token = Auth.getToken();
+    axios
+      .delete(`/api/events/${this.props.match.params.id}/photos/${photo.id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(() => this.props.history.push(`/events/${this.state.event.id}`));
   }
 
 
@@ -230,7 +244,10 @@ class EventsShow extends React.Component {
                 <li className="column is-one-fifth-desktop is-one-third-tablet" key={photo.id}
                 >
                   <Link to={`/events/${event.id}/photo/${photo.id}`}>
-                    <PhotoCard {...photo} />
+                    <PhotoCard
+                      {...photo}
+                      handleDelete={this.handlePhotoDelete}
+                    />
                   </Link>
                 </li>
               )}

@@ -9,10 +9,12 @@ with app.app_context():
     db.create_all()
 
     # ------- USERS ------
+
     caro = User({
         'username': 'Caro-Promoter',
         'email': 'carolineho1983@yahoo.fr',
         'image': 'https://i.imgur.com/VY3wrcF.jpg',
+        'admin': True,
         'password': 'pass',
         'password_confirmation': 'pass'
     })
@@ -120,7 +122,7 @@ with app.app_context():
         'genre': 'Techno',
         'image': 'https://i.imgur.com/qfnzJ21.jpg',
         'price': 255,
-        'user_id': caro.id
+        'user_id': carl.id
     })
     eventtomorrowland.save()
 
@@ -219,7 +221,7 @@ with app.app_context():
         'genre': 'House',
         'image': 'https://i.imgur.com/awjetQv.jpg',
         'price': 45,
-        'user_id': caro.id
+        'user_id': carl.id
     })
     eventpt.save()
 
@@ -230,7 +232,7 @@ with app.app_context():
         'genre': 'House',
         'image': 'https://i.imgur.com/CzoKi64.jpg',
         'price': 45,
-        'user_id': caro.id
+        'user_id': carl.id
     })
     eventpt.save()
 
@@ -238,7 +240,7 @@ with app.app_context():
     pic1 = Photo({
         'event_id': eventdfctd.id,
         'image': 'https://i.imgur.com/s70Tsmr.jpg',
-        'user_id': caro.id,
+        'user_id': carl.id,
         'caption': 'stage 2'
     })
     pic1.save()
@@ -246,7 +248,7 @@ with app.app_context():
     pic2 = Photo({
         'event_id': eventdfctd.id,
         'image': 'https://i.imgur.com/91Dmfiz.jpg',
-        'user_id': caro.id,
+        'user_id': carl.id,
         'caption': 'the stage'
     })
     pic2.save()
@@ -318,7 +320,7 @@ with app.app_context():
     pic11 = Photo({
         'event_id': eventdfctd.id,
         'image': 'https://i.imgur.com/DLL6CB3.jpg',
-        'user_id': caro.id,
+        'user_id': carl.id,
         'caption': ''
     })
     pic11.save()

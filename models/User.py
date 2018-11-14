@@ -17,6 +17,7 @@ class User(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
     events = db.relationship('Event')
+    admin = db.Column(db.Boolean)
 
     @hybrid_property
     def password(self):
@@ -81,6 +82,7 @@ class UserSchema(ma.Schema):
             'password',
             'password_confirmation',
             'events',
+            'admin',
             'created_at',
             'updated_at'
         )
